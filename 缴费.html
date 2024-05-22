@@ -55,13 +55,18 @@
 		    background-color: transparent; /* 透明背景 */
 		    border: none; /* 无边框 */
 		}
+		/* 自定义按钮下拉箭头的样式 */
+		.button-select {
+		    position: relative;
+		    display: inline-block;
+		    /* 其他样式保持不变 */
+		}
 		
-		/* 自定义下拉三角的样式 */
-		.select::after {
+		.button-select::after {
 		    content: '▼'; /* 下拉箭头字符 */
 		    position: absolute;
 		    top: 50%;
-		    right: 10px; /* 根据需要调整位置 */
+		    right: 2px; /* 根据按钮大小调整位置 */
 		    transform: translateY(-50%);
 		    font-size: 14px; /* 字体大小 */
 		    pointer-events: none; /* 防止点击触发其他事件 */
@@ -71,8 +76,6 @@
 		.button-select:hover::after {
 		    color: #007bff; /* 鼠标悬停时的颜色 */
 		}
-	
-		
 		
 		.list{
 			background-color: #CBDAEF;
@@ -95,7 +98,7 @@
         .header {
             background-color: #007BFF;
             color: white;
-            padding: 10px 0;
+            padding: 0px 0;
             text-align: center;
             margin-bottom: 20px;
 			margin-bottom: 0; 
@@ -108,17 +111,28 @@
 			font-family: 楷体;
 			margin-bottom: 0;
         }
+		h1 .English{
+			margin: 0 auto;
+			font-size: 15px;
+		}
+		#sum{
+			color: red;
+		}
         .footer {
             text-align: center;
-            margin-top: 20px;
-            padding: 10px 0;
+            margin-top: 200px;
+            padding: 30px 0;
             background-color: #f2f2f2;
         }
+		.pay{
+			float: right;
+		}
     </style>
 </head>
 <body>
     <div class="header">
-        <h1><img src="校徽.png" class="school">江苏财经职业技术学院缴费平台</h1>
+        <h1><img src="校徽.png" class="school">江苏财经职业技术学院缴费平台<p class="English">
+		Jiangsu Vocational College of Finance & Enconomics</p></h1>
 		<button class="exit-button">退出</button>
     </div>
 	
@@ -147,8 +161,10 @@
 		 <p class="list">费用项目列表</p>
         <table>
                 <tr>
-                    <th>费用名称</th>
-                    <th>收费项目</th>
+				   <th></th>
+                   <th><input type="checkbox" id="checkbox1" >
+                   <label for="checkbox1">费用名称</label> </th>
+					<th>收费项目</th>
                     <th>单价</th>
                     <th>数量</th>
                     <th>应收金额</th>
@@ -159,9 +175,11 @@
                 </tr>
                 <!-- 添加表格数据 -->
                 <tr>
-                    <td>学费（必缴）</td>
+					<td>1</td>
+                    <td><input type="checkbox" id="checkbox2">
+                   <label for="checkbox2">学费（必缴）</label> </td>
                     <td>2024学费-2</td>
-                    <td>0</td>
+                    <td>0.00</td>
                     <td>0</td>
                     <td>7500.00</td>
                     <td>0.00</td>
@@ -170,9 +188,11 @@
 					<td>0.00</td>
                 </tr>
                 <tr>
-                    <td>住宿费</td>
+					<td>2</td>
+                    <td><input type="checkbox" id="checkbox2">
+                   <label for="checkbox2">住宿费</label> </td>
                     <td>2024住宿费-2</td>
-                    <td>0</td>
+                    <td>0.00</td>
                     <td>0</td>
                     <td>1200.00</td>
                     <td>0.00</td>
@@ -181,20 +201,25 @@
 					<td>0.00</td>
                 </tr>
                 <tr>
-                    <td>代办费</td>
+					<td>3</td>
+                    <td><input type="checkbox" id="checkbox2">
+                   <label for="checkbox2">代办费</label></td>
                     <td>2024代办费-2</td>
+                    <td>0.00</td>
                     <td>0</td>
                     <td>350.00</td>
                     <td>0.00</td>
-                    <td>350.01</td>
                     <td>0.00</td>
+					<td>350.00</td>
                     <td>0.00</td>
-					<td>0.00</td>
+					
                 </tr>
                 <tr>
-                    <td>专业学费</td>
+					<td>4</td>
+                    <td><input type="checkbox" id="checkbox2">
+                   <label for="checkbox2">专业学费</label></td>
                     <td>2024专业学费-2</td>
-                    <td>0</td>
+                    <td>0.00</td>
                     <td>0</td>
                     <td>2800.00</td>
                     <td>0.00</td>
@@ -203,9 +228,11 @@
 					<td>0.00</td>
                 </tr>
                 <tr>
-                    <td>电子图像采集费</td>
+					<td>5</td>
+                    <td><input type="checkbox" id="checkbox2">
+                    <label for="checkbox2">电子图像采集费</label></td>
                     <td>2024电子图像采集费</td>
-                    <td>75.00</td>
+                    <td>0.00</td>
                     <td>0</td>
                     <td>75.00</td>
                     <td>0.00</td>
@@ -217,8 +244,9 @@
                 
             </table>
         </div>
+		<p id="sum">费用总额:<strong>¥</strong><span id="amount"><strong>11925.00</strong>(大写：壹万壹仟玖佰贰拾伍)</span>  <button class="pay">支付</button></p>
     <div class="footer">
-        <p>版权所有 © 2023 江委财理科业技术学院</p >
+        <p>版权所有 © 2023 江苏财经职业技术学院</p >
     </div>
 </body>
 </html>
